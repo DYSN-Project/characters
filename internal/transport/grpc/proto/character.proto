@@ -1,0 +1,50 @@
+syntax = "proto3";
+
+option go_package = "/grpc/pb;pb";
+
+package character;
+
+import "google/protobuf/empty.proto";
+//import "google/protobuf/timestamp.proto";
+
+
+service Character {
+  rpc Ping(google.protobuf.Empty) returns (google.protobuf.Empty) {}
+  rpc List(ListRequest) returns (CharacterList) {}
+  rpc CreateCharacter(CreateCharacterRequest) returns (CharacterFull) {}
+  rpc UpdateCharacter(UpdateCharacterRequest) returns (google.protobuf.Empty) {}
+  rpc DeleteCharacter(DeleteCharacterRequest) returns (google.protobuf.Empty) {}
+}
+
+message ListRequest {
+  int32 limit = 1;
+  int32 offset = 2;
+}
+
+message CreateCharacterRequest {
+  string name = 1;
+  string description = 2;
+}
+
+message UpdateCharacterRequest {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  int64  status = 4;
+}
+
+message DeleteCharacterRequest {
+  string id = 1;
+}
+
+message CharacterList {
+  repeated CharacterFull List = 1;
+}
+
+message CharacterFull {
+  string id = 1;
+  string name = 2;
+  string description = 3;
+  string image = 4;
+}
+

@@ -1,0 +1,1 @@
+protoc -I ../internal/transport/grpc/proto/ character.proto  --go-grpc_out=../internal/transport --go_out=../internal/transport

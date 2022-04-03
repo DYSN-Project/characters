@@ -1,0 +1,13 @@
+version: '3.1'
+
+services:
+  mongodb:
+    container_name: character_mongo
+    image: mongo
+    restart: always
+    environment:
+      MONGO_INITDB_DATABASE: character
+      MONGO_INITDB_ROOT_USERNAME: character
+      MONGO_INITDB_ROOT_PASSWORD: character
+    ports:
+      - '27017:27017'
